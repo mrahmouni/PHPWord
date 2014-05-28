@@ -197,6 +197,26 @@ class Font extends AbstractStyle
      */
     private $shading;
 
+    // add this field after private $_fgColor;
+    private $_rtl;
+	
+
+    // add these two methods at the end of the class
+
+    public function getRtl() 
+    {
+        return $this->_rtl;
+    }
+
+    public function setRtl($pValue = false) 
+    {
+        if($pValue == '') {
+                $pValue = false;
+        }
+        $this->_rtl = $pValue;
+        return $this;
+    }    
+
     /**
      * Create new font style
      *
@@ -206,6 +226,7 @@ class Font extends AbstractStyle
     public function __construct($type = 'text', $paragraphStyle = null)
     {
         $this->type = $type;
+		$this->_rtl = null;
 
         if ($paragraphStyle instanceof Paragraph) {
             $this->paragraphStyle = $paragraphStyle;
