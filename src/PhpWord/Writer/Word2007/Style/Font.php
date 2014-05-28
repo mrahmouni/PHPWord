@@ -146,6 +146,11 @@ class Font extends AbstractStyle
             $this->xmlWriter->writeElement('w:caps', null);
         }
 
+        if(!is_null($this->style->getRtl())) {
+            // <w:rtl/>
+            $this->xmlWriter->startElement('w:rtl');
+            $this->xmlWriter->endElement();
+        }
         $this->xmlWriter->endElement();
     }
 
